@@ -17,11 +17,25 @@
 <script>
   var zombie_map;
   function initMap() {
-      zombie_map = new google.maps.Map(document.getElementById('zombie_map'), {
+ 	zombie_map = new google.maps.Map(document.getElementById('zombie_map'), {
 			zoom: 15,
 			center: {lat: 51.084655, lng: -1.173108}
 		});
-  }	  
+	  
+	if(navigator.geolocation) {
+    		navigator.geolocation.watchPosition(set_my_position);
+	}
+	else {
+    		alert("Geolocation doesn't work in your browser");
+	}
+  }
+  function set_my_position(position) {
+	  var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	  var marker = new google.maps.Marker({
+  		position: {lat: 52.206750, lng: 0.124475 },
+ 		map: mymap
+});
+  }
 </script>
 
 
