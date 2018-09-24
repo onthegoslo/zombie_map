@@ -17,12 +17,20 @@
 
 <script>
   var zombie_map;
+  var old_position;
   function initMap() {
 
             zombie_map = new google.maps.Map(document.getElementById('zombie_map'), {
-            zoom: 15,
-            center: {lat: 51.084655, lng: -1.173108}
-        });
+            	zoom: 15,
+            	center: {lat: 51.084655, lng: -1.173108}
+	    });
+	    var icon = "https://onthegoslo.github.io/zombie_map/mylocation.png";
+	    var marker = new google.maps.Marker({
+		  position: {lat: 51.084655, lng: -1.173108},
+		  map: zombie_map,
+		  icon: icon
+	    });	
+	  
 	  	if(navigator.geolocation) {
 			navigator.geolocation.watchPosition(set_my_position);
 		}
@@ -31,13 +39,15 @@
 		}
     }
   function set_my_position(position) {
-	var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	  old_position.setMap(null);
+	  var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	  var icon = "https://onthegoslo.github.io/zombie_map/mylocation.png";
 	  var marker = new google.maps.Marker({
 		  position: pos,
 		  map: zombie_map,
 		  icon: icon
 	  });
+	  old_position = marker;
   }
 </script>
 
