@@ -1,113 +1,16 @@
 <html>
-  <head>
-    <title>Zombie Gonna Get Ya</title>
-	<style>
-		#zombie_map {
-			width: 1200px;
-			height: 800px;
-			background-color: grey;
-		}
-	</style>
-  
-  </head>
-  <body>
-	
+<head>
+<title>Welcome to The Zombie Zone Friend challeng!</title>
+<style>
+	#zombiemap {
+		width: 600px;
+		height: 400px;
+		background-color: grey;
+	}
+</style>
+</head>
+
+<body>
+Welcome to My zombie game!!</br></br></br>
+
 <div id="zombie_map"></div>
-
-<script>
-	var zombie_map;
-
-	var data = `51.085975932677066 -1.169374365051226 man_down.png
-51.092492431041784 -1.1695674841002983 man_down.png
-51.090374557590884 -1.1613030189971596 man_down.png
-51.08564230187242 -1.1594875594988707 man_down.png
-51.082842879118 -1.163423945356044 man_down.png
-51.08459182744656 -1.1690458554512588 man_down.png
-51.09158950483848 -1.1693559273803658 place_safe.png
-51.09104813940987 -1.1616818576497963 place_safe.png
-51.08923638728808 -1.161447213033398 man_down.png
-51.090016086245335 -1.1667518981975036 zombie_boy.png
-51.09022498756719 -1.1669557460826354 zombie_boy.png
-51.09048105886804 -1.1672454246562438 zombie_boy.png
-51.09072365142413 -1.1674600013774352 zombie_boy.png
-51.09052822974251 -1.167567289738031 zombie_boy.png
-51.09029237488909 -1.167266882328363 zombie_boy.png
-51.089844216541856 -1.1679089069366455 zombie_boy.png
-51.09237459474299 -1.1668806442302184 zombie_girl.png
-51.092037672321744 -1.1666875251811462 zombie_girl.png
-51.09132338867049 -1.1657219299357848 zombie_girl.png
-51.090016086245335 -1.1646490463298278 zombie_girl.png
-51.08887048157543 -1.1638121971171813 zombie_girl.png
-51.08757658806045 -1.1635547050517516 zombie_girl.png
-51.093600971627026 -1.1616664299052673 zombie_boy.png
-51.09462517355149 -1.1620312103312926 zombie_boy.png
-51.09178160963989 -1.1604433425944762 zombie_boy.png
-51.09025868124042 -1.159627951053949 zombie_boy.png
-51.08811571475731 -1.158726728824945 zombie_boy.png
-51.0821175763202 -1.1591344245952087 zombie_girl.png
-51.08128181889525 -1.1592846283000426 zombie_girl.png
-51.08002284725166 -1.1623071186837706 zombie_girl.png
-51.079874562096315 -1.1654828541574034 zombie_girl.png
-51.08076426589943 -1.16556868484588 zombie_boy.png
-51.08197747078475 -1.1642812245187315 zombie_boy.png
-51.08166743256267 -1.1737440579232725 zombie_boy.png
-51.08366242478995 -1.1752890103158506 zombie_boy.png
-51.08492946977337 -1.1763833515939268 zombie_boy.png
-51.08430943081984 -1.170611237793878 zombie_girl.png
-51.08368938355521 -1.1726497166451963 zombie_girl.png
-51.08753084696991 -1.1740659230050596 zombie_boy.png
-51.08696475661498 -1.1773704045114073 zombie_boy.png`;
-
-	var markers = data.split("\n");
-
-	function initMap() {
-
-		zombie_map = new google.maps.Map(document.getElementById('zombie_map'), {
-			zoom: 15,
-			center: {lat: 51.084655, lng: -1.173108 }
-		});
-
-		if(navigator.geolocation) {
-			navigator.geolocation.watchPosition(set_my_position);
-		}
-		else {
-			alert("Geolocation doesn't work in your browser");
-		};
-
-		var all_markers = [];
-
-		for(var i=0; i < markers.length; i++){
-          
-            		var marker_data = markers[i].trim();
-            		marker_data = marker_data.split(" ");
-            		var lat = marker_data[0];
-            		var long = marker_data[1];
-            		var emoji = marker_data[2];
-			var marker_position = new google.maps.LatLng(lat, long);
-			var marker = new google.maps.Marker({
-				position: marker_position,
-				icon: emoji,
-				map: zombie_map
-			});
-            		all_markers.push(marker);
-      		}
-	};
-
-	function set_my_position(position){
-		var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-		var marker = new google.maps.Marker({
-			position: pos,
-			map: zombie_map
-			
-		});
-	};
-
-	
-</script>
-
-<script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGJ6i8D82sVYrLJ9rzbg9kezQFm9rCOsY&callback=initMap">
-</script>
-
-  </body>
-</html>
