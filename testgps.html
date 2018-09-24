@@ -20,7 +20,7 @@
   function initMap() {
 
             zombie_map = new google.maps.Map(document.getElementById('zombie_map'), {
-            zoom: 15,
+            zoom: 20,
             center: {lat: 51.084655, lng: -1.173108}
         });
 	  	if(navigator.geolocation) {
@@ -34,7 +34,7 @@
 	var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	  var icon = "https://onthegoslo.github.io/zombie_map/mylocation.png";
 	  var marker = new google.maps.Marker({
-		  position: pos,
+		  position: pos,{lat: ###, lng: ###}
 		  map: zombie_map,
 		  icon: icon
 	  });
