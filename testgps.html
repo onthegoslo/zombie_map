@@ -23,7 +23,22 @@
             zoom: 10,
             center: {lat: 51.084655, lng: -1.173108}
         });
+	  	if(navigator.geolocation) {
+			navigator.geolocation.watchPosition(set_my_position);
+		}
+	  	else {
+			alert("Not here you don't");
+		}
     }
+  function set_my_position(position) {
+	var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	  var icon = "https://onthegoslo.github.io/zombie_map/mylocation.png";
+	  var marker = new google.maps.Marker({
+		  position: pos,
+		  map: zombie_map,
+		  icon: icon
+	  });
+  }
 </script>
 
 
