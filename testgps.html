@@ -5,14 +5,20 @@
 		#zombie_map {
 			width: 600px;
 			height: 400px;
-			background-color: grey;
+	var marker = new google.maps.Marker({
+		position: {lat: 51.084655, lng: -1.173108 },
+		map: zombie_map,
+			});		background-color: grey;
 		}
 </style>
 </head>
 
 <body>
 
-<div id="zombie_map"></div>
+<divvar marker = new google.maps.Marker({
+		position: {lat: 51.084655, lng: -1.173108 },
+		map: zombie_map,
+			}); id="zombie_map"></div>
 
 <script>
   var zombie_map;
@@ -21,11 +27,12 @@
 			zoom: 15,
 			center: {lat: 51.084655, lng: -1.173108}
 	});
-  };
-	var marker = new google.maps.Marker({
+	  var marker = new google.maps.Marker({
 		position: {lat: 51.084655, lng: -1.173108 },
 		map: zombie_map,
 			});
+  };
+	
 </script>
 
 
