@@ -41,6 +41,9 @@ function initMap() {
 	  	if(navigator.geolocation) {
 			navigator.geolocation.watchPosition(set_my_position);
 		}
+		else {
+			alert("Not here you don't");
+	}
 	}
   function set_my_position(position) {
 	  old_position.setMap(null);
